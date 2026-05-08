@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description:
     "Alan Diaz, maestro decorador de pasteles artesanales con más de 10 años de experiencia. Especialista en pasteles de boda, cumpleaños, quinceañeras y eventos especiales. Diseños únicos 100% personalizados.",
   keywords:
-    "decorador de pasteles, pasteles artesanales, pasteles para boda, pasteles de cumpleaños, Alan Diaz pasteles, cake designer, tortas personalizadas, repostería artesanal, pasteles elegantes, pasteles quinceañera, pastelero profesional, cake decorator Mexico",
+    "decorador de pasteles, pasteles artesanales, pasteles para boda, pasteles de cumpleaños, Alan Diaz pasteles, cake designer Mexico, tortas personalizadas, repostería artesanal, pasteles elegantes, pasteles quinceañera, pastelero profesional, pasteles fondant, pasteles naked cake, pasteles drip cake, pasteles para baby shower, pasteles de XV años, pasteles a domicilio, pasteles temáticos, repostería creativa, wedding cake Mexico, pastelería personalizada, pasteles de 3 pisos, pasteles con flores, mejor decorador de pasteles, pasteles personalizados precio, decorador pasteles cerca de mi, pastelero artesanal, cake decorator, sugar flower cakes, pasteles de autor, pastelería fina",
   authors: [{ name: "Alan Diaz" }],
   creator: "Alan Diaz",
   openGraph: {

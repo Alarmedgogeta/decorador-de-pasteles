@@ -91,43 +91,110 @@ const testimonials = [
   },
 ];
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Alan Diaz | Decorador de Pasteles Artesanales",
-  description:
-    "Maestro decorador de pasteles artesanales especializado en bodas, cumpleaños, quinceañeras y eventos especiales.",
-  founder: {
+const faqs = [
+  {
+    question: "¿Cuánto tiempo antes debo pedir mi pastel?",
+    answer:
+      "Se recomienda hacer tu pedido con al menos 2 semanas de anticipación para pasteles de cumpleaños, y con 1 a 3 meses de anticipación para pasteles de boda o quinceañera, para garantizar la disponibilidad y el diseño perfecto.",
+  },
+  {
+    question: "¿Hacen pasteles personalizados con diseño propio?",
+    answer:
+      "¡Absolutamente! Cada pastel que creamos es completamente personalizado. Puedes traer fotos, inspiración o simplemente contarnos tu idea y nosotros diseñamos el pastel perfecto para ti.",
+  },
+  {
+    question: "¿Qué estilos de pasteles ofrece Alan Diaz?",
+    answer:
+      "Ofrecemos pasteles fondant, naked cake, drip cake, pasteles con flores naturales o de azúcar, pasteles de varios pisos, pasteles temáticos y mucho más. Nos especializamos en bodas, cumpleaños, quinceañeras, baby showers y eventos corporativos.",
+  },
+  {
+    question: "¿Hacen entregas a domicilio?",
+    answer:
+      "Sí, contamos con servicio de entrega a domicilio para garantizar que tu pastel llegue en perfectas condiciones al lugar de tu evento.",
+  },
+  {
+    question: "¿Cuánto cuesta un pastel personalizado?",
+    answer:
+      "El precio varía según el tamaño, diseño y complejidad. Ofrecemos consulta gratuita para darte una cotización personalizada sin compromiso. Contáctanos para conocer nuestros precios.",
+  },
+  {
+    question: "¿Usan ingredientes naturales?",
+    answer:
+      "Sí, todos nuestros pasteles están elaborados con ingredientes 100% naturales y artesanales, sin conservadores artificiales. La calidad es nuestra máxima prioridad.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Alan Diaz | Decorador de Pasteles Artesanales",
+    description:
+      "Maestro decorador de pasteles artesanales especializado en bodas, cumpleaños, quinceañeras y eventos especiales.",
+    founder: {
+      "@type": "Person",
+      name: "Alan Diaz",
+      jobTitle: "Maestro Decorador de Pasteles",
+    },
+    priceRange: "$$",
+    servesCuisine: "Repostería Artesanal",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Catálogo de Pasteles Artesanales",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles de Boda" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles de Cumpleaños" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles de Quinceañera" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles para Baby Shower" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles Corporativos" } },
+      ],
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      reviewCount: "50",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "Person",
     name: "Alan Diaz",
-    jobTitle: "Maestro Decorador de Pasteles",
-  },
-  priceRange: "$$",
-  servesCuisine: "Repostería Artesanal",
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Catálogo de Pasteles Artesanales",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles de Boda" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles de Cumpleaños" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles de Quinceañera" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pasteles Corporativos" } },
+    jobTitle: "Maestro Decorador de Pasteles & CEO",
+    description:
+      "Alan Diaz es un maestro pastelero y decorador de pasteles artesanales con más de 10 años de experiencia en México, especializado en pasteles de boda, cumpleaños, quinceañeras y diseños personalizados únicos.",
+    knowsAbout: [
+      "Decoración de pasteles",
+      "Repostería artesanal",
+      "Pasteles de boda",
+      "Diseño de pasteles fondant",
+      "Pasteles naked cake",
+      "Pasteles drip cake",
     ],
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "50",
-  },
-};
+];
 
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {structuredData.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
 
       <NavBar />
 
@@ -154,7 +221,7 @@ export default function Home() {
               Transformando momentos especiales en obras de arte comestibles
             </p>
             <p className="text-base sm:text-lg text-rose-300/80 mb-12 max-w-2xl mx-auto">
-              Pasteles artesanales personalizados para bodas, cumpleaños, quinceañeras y eventos únicos en México
+              Pasteles fondant, naked cake y drip cake personalizados para bodas, cumpleaños, quinceañeras, baby showers y eventos únicos · Entrega a domicilio en México
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -424,6 +491,78 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="bg-white py-24">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="text-xs font-bold text-rose-500 uppercase tracking-widest">
+                Preguntas frecuentes
+              </span>
+              <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-stone-900 mt-3">
+                Todo lo que Necesitas Saber
+              </h2>
+              <p className="mt-4 text-stone-500 max-w-xl mx-auto">
+                Resuelve tus dudas sobre pasteles personalizados, tiempos de entrega, precios y más.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-rose-100 bg-rose-50/50 p-6 hover:border-rose-300 transition-colors"
+                >
+                  <h3 className="font-playfair text-lg font-bold text-stone-900 mb-3 flex items-start gap-3">
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-rose-600 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                      {i + 1}
+                    </span>
+                    {faq.question}
+                  </h3>
+                  <p className="text-stone-600 text-sm leading-relaxed pl-10">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Keywords / Servicios Tag Cloud ── */}
+        <section className="bg-rose-50 py-12">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-xs font-bold text-rose-400 uppercase tracking-widest mb-6">
+              Especialidades de Alan Diaz
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                "Pasteles de Boda",
+                "Pasteles de Cumpleaños",
+                "Pasteles de Quinceañera",
+                "Pasteles Fondant",
+                "Naked Cake",
+                "Drip Cake",
+                "Baby Shower",
+                "Pasteles Temáticos",
+                "Pasteles a Domicilio",
+                "Pasteles Corporativos",
+                "Pasteles Personalizados",
+                "Repostería Artesanal",
+                "Pasteles con Flores",
+                "Pasteles de 3 Pisos",
+                "Sugar Flowers",
+                "Pasteles de Autor",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-rose-200 bg-white px-4 py-2 text-sm text-stone-600 hover:border-rose-400 hover:text-rose-600 transition-colors cursor-default"
+                >
+                  {tag}
+                </span>
               ))}
             </div>
           </div>
